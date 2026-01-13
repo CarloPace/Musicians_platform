@@ -238,6 +238,8 @@ DELIMITER ;
  INSERT INTO users (username, email, password_hash, status, created_at)
  VALUES ('dan', 'dan@email.com', 
  '$argon2id$v=19$m=65536,t=4,p=1$V04wTy45Y2x0SzhKUTBlZA$pdQAJEdLHBXCnTHbZ3S96dB6VlVAKVnyB7VqHw9LC4M', 'active', NOW());
+
+ 
  /*password is: admin123*/
 INSERT INTO admins (username, email, password_hash, status, created_at, 2fa_secret, nonce)
  VALUES ('admin', 'admin@example.com', '$argon2id$v=19$m=65536,t=4,p=1$cEdmOWhzc3NQcFA1bjk2Yw$O4lcBKFDS2BPTg1YfsbBAznwCgNh9HAkpxQBnDYrEcI', 'active', NOW(), NULL, NULL);
