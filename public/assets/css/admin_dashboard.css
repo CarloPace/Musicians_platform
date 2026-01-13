@@ -1,0 +1,247 @@
+/* === GLOBAL RESETS === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background: #f4f6f8;
+  color: #333;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+/* === CONTAINER === */
+.container {
+  max-width: 1000px;
+  background: #ffffff;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+}
+
+/* === HEADER AREA === */
+.dashboard-header {
+  display: flex;
+  max-width: 1000px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  background: #1f2937;
+  padding: 20px 30px;
+  border-radius: 12px 12px 0 0;
+  color: #fff;
+}
+
+.admin-welcome {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.admin-section {
+  margin-top: 20px;
+}
+
+/* === LOGOUT BTN === */
+.logout-btn {
+  background-color: #f44336;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #d32f2f;
+}
+
+/* === ACTION BUTTONS (ADMIN PANEL) === */
+.action-form {
+  display: inline-block;
+}
+
+.btn.small {
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 5px;
+}
+
+/* Primary action blue */
+.btn-gold {
+  background: #d4a017;
+  color: #fff;
+}
+.btn-gold:hover {
+  background: #b58812;
+}
+
+/* Secondary badge remove */
+.btn-secondary {
+  background: #6c757d;
+  color: #fff;
+}
+.btn-secondary:hover {
+  background: #565e64;
+}
+
+/* Activate */
+.btn-success {
+  background: #28a745;
+  color: #fff;
+}
+.btn-success:hover {
+  background: #1f8a36;
+}
+
+/* Deactivate / Delete */
+.btn-danger {
+  background: #dc3545;
+  color: #fff;
+}
+.btn-danger:hover {
+  background: #b82a36;
+}
+.btn.change-password-btn {
+  background-color: #00ad37;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  margin-left: 15px;
+  transition: background-color 0.3s ease;
+}
+/* === BADGES === */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.badge.premium {
+  background: #ffd700;
+  color: #000;
+}
+
+.badge.free {
+  background: #28a745;
+  color: #fff;
+}
+
+/* === TABLES === */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.styled-table thead {
+  background-color: #007bff;
+  color: #fff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.styled-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.tabs-nav {
+  display: flex;
+  gap: 10px;
+  border-bottom: 2px solid #eee;
+  margin: 20px 0;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  transition: color 0.2s ease, border-bottom 0.2s ease;
+}
+
+.tab-btn.active {
+  color: #007bff;
+  border-bottom: 3px solid #007bff;
+}
+
+.tab-btn:hover {
+  color: #fefefe;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .tabs-nav {
+    flex-direction: column;
+  }
+
+  .tab-btn {
+    width: 100%;
+  }
+
+  .styled-table {
+    font-size: 13px;
+  }
+
+  .styled-table th,
+  .styled-table td {
+    padding: 8px 10px;
+  }
+}

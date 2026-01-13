@@ -1,0 +1,11 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.11",
+        "monolog/monolog": "^3.9",
+        "bjeavons/zxcvbn-php": "^1.4",
+        "robthree/twofactorauth": "^3.0",
+        "bacon/bacon-qr-code": "^3.0",
+        "endroid/qr-code": "^6.0",
+        "dasprid/enum": "^1.0"
+    }
+}

@@ -1,0 +1,4 @@
+create files:
+secret.key (encryption key Used for 2fa must be base64 encoded)
+server.crt (openssl x509 file ,used to enable https)
+server.key (openssl private key , used to enable https)

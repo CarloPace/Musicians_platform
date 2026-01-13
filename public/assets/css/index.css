@@ -1,0 +1,69 @@
+:root{
+    --primary: #007bff;
+    --primary-dark: #0056b3;
+    --bg: #f9f9f9;
+    --surface: #ffffff;
+    --radius: 8px;
+    --gap: 10px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+    margin: 0;
+    padding: 40px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--surface);
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+h1 {
+    margin: 0 0 16px;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+a {
+    display: inline-block;
+    margin: var(--gap);
+    padding: 10px 20px;
+    text-decoration: none;
+    background: var(--primary);
+    color: #ffffff;
+    border-radius: 6px;
+    transition: background .15s ease, transform .08s ease, box-shadow .12s ease;
+    cursor: pointer;
+}
+
+a:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+a:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.14);
+}
+
+/* Responsive tweaks */
+@media (max-width: 420px) {
+    body { padding: 20px; }
+    .container { padding: 20px; margin: 20px auto; }
+    a { display: block; width: 100%; box-sizing: border-box; }
+}

@@ -1,0 +1,142 @@
+1. Run the queries inside "musicians_db.sql" to create the db;
+2. Install composer
+3. In the root folder of the project open powershell and run the command : "composer install", it will automatically install all the necessary packages mentioned
+   inside composer.json
+
+ENABLING HTTPS
+1. go to C:\xampp\apache\conf
+2. create a new folder with name "ssl", inside copy and paste the files available inside the folder "cert" in the GitHub folder
+3. open xampp control panel, in the apache row click on config and select httpd-ssl.conf
+4. locate the lines :
+	SSLCertificateFile and insert the path "C:/xampp/apache/conf/ssl/server.crt"
+	SSLCertificateKeyFile and insert the path "C:/xampp/apache/conf/ssl/server.key"
+5. restart the apache server
+6. go to the browser and type https://127.0.0.1, it will show not secure connection, proceed anyway, the server will now successfully use ssl
+7.(optional) if you want to remove the warning, go in the folder of the file server.crt , rigth click on it, select install certificate, then manually choose the location
+, select root certificate, finish. Restart apache and the browser, go to the platform page.
+
+ENABLING PHPMYADMIN
+with roles for mysql, the root has a password, so php my admin will not work unless you modify the config.inc.php
+in xamp/phpmyadmin/config.inc.php substitute the lines: ( before this don't forget to run the new queries on the db)
+$cfg['Servers'][$i]['auth_type'] = 'config';
+$cfg['Servers'][$i]['user'] = 'root';
+$cfg['Servers'][$i]['password'] = '-lv@&eM)ed5Rqe.IXNFA'; <-- new password of the root
+$cfg['Servers'][$i]['AllowNoPassword'] = false;
+
+
+CLEANING OLD SESSION DATA
+Since the introduction of timestamp, the session id is periodically regenerated every time an user is idle for more 
+than 15 minutes with (false) argument (i.e. the session id is changed but old session will be kept). 
+This prevent problems related to slow internet connection or latency. The increased number of old session
+must be hadled to avoid momery risks. Normally php do that with the settings present in the .ini file. We will just increase
+the number of checks for this sessions since it works with a probability.
+Go in ../xampp/php/php.ini and change those settings:
+session.gc_probability = 1
+session.gc_divisor = 1         ; 100% chance - runs every time
+session.gc_maxlifetime = 900
+Then relaunch the server
+
+ADMIN CONFIG 
+If you want to create an admin for the moment, there is a query to do that, copy and paste it in a php file
+like in login.php at the beginning and add the credentials manually.
+Since also a new attribute was added in the db, you should delete the otp table and re-run all the query in musicians_db.sql 
+for otps table
+
+2FA
+Run again sql code for admin tables, since a new column was added.
+For qr code updates, go in ../xampp/php/php.ini file and enable the quoted " ;extension=gd " to "extension=gd"
+and ";extension=sodium" to "extension=sodium" for encryption of the totp in db
+
+SESSION MANAGMENT
+always include first ../../includes/session.php and then ../../icludes/csfr_protection.php to not have conflicts.
+Use function rotateSession() every time in an unauthenticated session we change the priviledges of the user
+Use the function requireLogin()/requireAdminLogin() at the beginning of all authenticated sessions
+
+----------------------------------
+ENABLING DATABASE PERIODIC TASKS
+FOR DELETING CONSUMED/EXPIRED OTPS AND DELETE PENDING USERS , IN PENDING STATUS FOR MORE THAN 6 HOURS
+
+go to xampp/mysql/bin locate file my.ini
+
+locate the column that stats with [mysqld] , and add the line event_scheduler = ON, following an example
+[mysqld]
+port=3306
+socket="C:/xampp/mysql/mysql.sock"
+basedir="C:/xampp/mysql"
+tmpdir="C:/xampp/tmp"
+datadir="C:/xampp/mysql/data"
+pid_file="mysql.pid"
+# enable-named-pipe
+key_buffer=16M
+max_allowed_packet=1M
+sort_buffer_size=512K
+net_buffer_length=8K
+read_buffer_size=256K
+read_rnd_buffer_size=512K
+myisam_sort_buffer_size=8M
+log_error="mysql_error.log"
+event_scheduler = ON  <----- LINE TO ADD
+-------------------------------------
+ENABLE sodium library for php
+go to xamp/php/php.ini 
+locate the line ;extension=sodium, remove the ; and save
+---------------------------------------------------------
+To hide php file listing:
+Goto Apache (httpd.conf) and locate:
+Options Indexes FollowSymLinks Includes ExecCGI 
+(inside Directory tag of DocumentRoot) 
+replace with: Options FollowSymLinks
+It simply forbidden the access of /php content directly. (Indexes)
+Prevent CGI (execution of scripts)
+Prevent old type of inclusion of files (Includes)
+-----------------------------------------------------------
+To Hide Apache Details:
+Goto xampp\apache\conf\extra\httpd-default.conf
+locate:
+ServerTokens Full
+ServerSignature On
+Change to:
+ServerTokens Prod
+ServerSignature Off
+---------------------------------------------------------
+Hide PHP details
+Go to C:\xampp\php\php.ini
+Locate expose_php
+change with expose_php=Off
+---------------------------------------------------------
+Disable showing errors
+Go to C:\xampp\php\php.ini
+Create manually a folder inside xamp/php named logs
+Locate display_errors=On
+change with:
+display_errors=Off
+display_startup_errors=Off
+
+Activate logging on log files
+log_errors=On
+---------------------------------------------------------
+Disable remote file uploads (Uploads from another website)
+Go to C:\xampp\php\php.ini
+Locate allow_url_fopen=On
+change with:
+allow_url_fopen=Off
+--------------------------------------------------------
+Disable dangerous functions, since in our website are not needed
+Go to C:\xampp\php\php.ini
+Locate disable_functions=
+change with:
+disable_functions=exec,passthru,shell_exec,system,proc_open,popen,curl_exec,curl_multi_exec,parse_ini_file,show_source
+--------------------------------------------------------
+Hardening http
+Goto xampp\apache\conf\httpd.conf
+add to the bottom of the file
+TraceEnable Off //Disable TRACE
+
+add the block:
+//Prevents access to files that starts with . , files like .env
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+
+

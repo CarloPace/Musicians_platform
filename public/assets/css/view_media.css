@@ -1,0 +1,115 @@
+/* === GLOBAL === */
+body {
+    background: #f6f8fa;
+    margin: 0;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+/* === CONTAINER === */
+.media-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* === TITLE + META === */
+.media-title {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.media-meta {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.premium-label {
+    color: #d4a017;
+    font-weight: bold;
+    margin-left: 4px;
+}
+
+.free-label {
+    color: #333;
+    margin-left: 4px;
+}
+
+/* === AUDIO SECTION === */
+.audio-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+audio {
+    flex: 1;
+    min-width: 250px;
+    height: 40px;
+}
+
+.audio-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* === BUTTONS === */
+.btn {
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+}
+
+.btn-download {
+    background: #007bff;
+}
+
+.btn-download:hover {
+    background: #0056b3;
+}
+
+.btn-edit {
+    background: #28a745;
+}
+
+.btn-edit:hover {
+    background: #218838;
+}
+
+/* === LYRICS === */
+.lyrics-title {
+    margin-top: 25px;
+}
+
+.lyrics-text {
+    background: #fafafa;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    margin-top: 10px;
+}
+
+/* === BACK LINK === */
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
