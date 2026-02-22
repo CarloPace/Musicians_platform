@@ -2,7 +2,7 @@ Follow these simple steps to run the project:
 
 1️⃣ Download the Project
 
-    git clone https://github.com/your-username/your-repository-name.git
+    git clone https://github.com/your-username/repository-name.git
 
 2️⃣ Move Project to XAMPP
   
