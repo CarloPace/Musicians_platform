@@ -6,7 +6,7 @@
 -- Generation Time: Oct 18, 2025 at 12:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
-
+--
 CREATE DATABASE musicians_db;
 
 
